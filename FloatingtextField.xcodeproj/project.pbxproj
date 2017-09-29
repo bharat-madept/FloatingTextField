@@ -12,9 +12,9 @@
 		4F1B4DFB1F7252B5007200FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B4DF91F7252B5007200FF /* Main.storyboard */; };
 		4F1B4DFD1F7252B5007200FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B4DFC1F7252B5007200FF /* Assets.xcassets */; };
 		4F1B4E001F7252B5007200FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B4DFE1F7252B5007200FF /* LaunchScreen.storyboard */; };
-		4F1B4E081F7252FA007200FF /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B4E071F7252FA007200FF /* FloatingTextField.swift */; };
-		4F2A905F1F7A91EC008ED0EF /* ValidationRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A905E1F7A91EC008ED0EF /* ValidationRules.swift */; };
-		4F2A90611F7A93FD008ED0EF /* UITextField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A90601F7A93FD008ED0EF /* UITextField+Validation.swift */; };
+		4F4B0C9B1F7E47770043313D /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B0C981F7E47770043313D /* FloatingTextField.swift */; };
+		4F4B0C9C1F7E47770043313D /* UITextField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B0C991F7E47770043313D /* UITextField+Validation.swift */; };
+		4F4B0C9D1F7E47770043313D /* ValidationRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B0C9A1F7E47770043313D /* ValidationRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,9 @@
 		4F1B4DFC1F7252B5007200FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1B4DFF1F7252B5007200FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F1B4E011F7252B5007200FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F1B4E071F7252FA007200FF /* FloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
-		4F2A905E1F7A91EC008ED0EF /* ValidationRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRules.swift; sourceTree = "<group>"; };
-		4F2A90601F7A93FD008ED0EF /* UITextField+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validation.swift"; sourceTree = "<group>"; };
+		4F4B0C981F7E47770043313D /* FloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
+		4F4B0C991F7E47770043313D /* UITextField+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validation.swift"; sourceTree = "<group>"; };
+		4F4B0C9A1F7E47770043313D /* ValidationRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +60,25 @@
 		4F1B4DF41F7252B5007200FF /* FloatingtextField */ = {
 			isa = PBXGroup;
 			children = (
+				4F4B0C971F7E47770043313D /* Source */,
 				4F1B4DF51F7252B5007200FF /* AppDelegate.swift */,
 				4F1B4DF71F7252B5007200FF /* ViewController.swift */,
-				4F1B4E071F7252FA007200FF /* FloatingTextField.swift */,
-				4F2A905E1F7A91EC008ED0EF /* ValidationRules.swift */,
-				4F2A90601F7A93FD008ED0EF /* UITextField+Validation.swift */,
 				4F1B4DF91F7252B5007200FF /* Main.storyboard */,
 				4F1B4DFC1F7252B5007200FF /* Assets.xcassets */,
 				4F1B4DFE1F7252B5007200FF /* LaunchScreen.storyboard */,
 				4F1B4E011F7252B5007200FF /* Info.plist */,
 			);
 			path = FloatingtextField;
+			sourceTree = "<group>";
+		};
+		4F4B0C971F7E47770043313D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4F4B0C981F7E47770043313D /* FloatingTextField.swift */,
+				4F4B0C991F7E47770043313D /* UITextField+Validation.swift */,
+				4F4B0C9A1F7E47770043313D /* ValidationRules.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,11 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4B0C9C1F7E47770043313D /* UITextField+Validation.swift in Sources */,
+				4F4B0C9D1F7E47770043313D /* ValidationRules.swift in Sources */,
 				4F1B4DF81F7252B5007200FF /* ViewController.swift in Sources */,
-				4F1B4E081F7252FA007200FF /* FloatingTextField.swift in Sources */,
-				4F2A905F1F7A91EC008ED0EF /* ValidationRules.swift in Sources */,
+				4F4B0C9B1F7E47770043313D /* FloatingTextField.swift in Sources */,
 				4F1B4DF61F7252B5007200FF /* AppDelegate.swift in Sources */,
-				4F2A90611F7A93FD008ED0EF /* UITextField+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
