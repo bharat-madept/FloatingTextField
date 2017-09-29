@@ -9,11 +9,13 @@
 import UIKit
 
 @IBDesignable class FloatingTextField: UITextField {
-
+    
     fileprivate let bottomLayer = CALayer()
     fileprivate var floatingLabel: FloatingLabel? = nil
     fileprivate var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     fileprivate var placeholderText: String? = nil
+    fileprivate var errorLabel: UILabel?
+    fileprivate var placeholderTextWidth = CGFloat(0.0)
     
     /// A UIColor value that determines text color of the placeholder label
     @IBInspectable var placeholderColor: UIColor = UIColor.lightGray {
@@ -33,7 +35,7 @@ import UIKit
     var normalLineColor: UIColor = .lightGray
     var activeLineColor: UIColor = .lightGray
     var filledTextFieldLineColor: UIColor = .lightGray
-
+    
     //MARK: initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,20 +46,21 @@ import UIKit
         setup()
     }
     
-    //MARK: private 
+    //MARK: private
     private func updatePlaceholder() {
         placeholderText = placeholder
         floatingLabel?.textColor = placeholderColor
         floatingLabel?.text = placeholderText
         floatingLabel?.font = placeholderFont ?? font
         floatingLabel?.textAlignment = textAlignment
-        
+        placeholderTextWidth = sizeOf(placeholderText ?? "", withFont: font!).width
         placeholder = ""
     }
     private func setup(){
         setuptextField()
         setupLabel()
         addObservers()
+        setupErrorLabel()
     }
     private func setuptextField(){
         setupBottomLayer()
@@ -78,6 +81,13 @@ import UIKit
         
         
     }
+    private func setupErrorLabel() {
+        placeholderTextWidth = sizeOf(placeholderText ?? "", withFont: font!).width
+        errorLabel = UILabel(frame: CGRect(x: placeholderTextWidth + 35, y: -((self.frame.height / 2 ) - 6), width: self.frame.width - (placeholderTextWidth + 20), height: 17))
+        errorLabel?.textColor = .red
+        errorLabel?.font = font?.withSize(12)
+        self.addSubview(errorLabel!)
+    }
     private func addObservers(){
         NotificationCenter.default.addObserver(self, selector: #selector(didBeginEditing), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
         
@@ -86,11 +96,13 @@ import UIKit
         NotificationCenter.default.addObserver(self, selector: #selector(didEndEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
         
     }
-    
+    private func sizeOf(_ string: String, withFont font: UIFont) -> CGSize {
+        return (string as NSString).size(attributes: [NSFontAttributeName: font])
+    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
 }
 extension FloatingTextField{
     func didBeginEditing(){
@@ -101,6 +113,8 @@ extension FloatingTextField{
     }
     func didChangeCharacters(){
         hasText ? moveToTop() : moveToOrigin()
+        errorLabel?.isHidden = true
+        bottomLayer.backgroundColor = activeLineColor.cgColor
     }
     private func moveToTop(){
         UIView.animate(withDuration: 0.2) {
@@ -115,6 +129,13 @@ extension FloatingTextField{
             frame?.origin.y = 0
             self.floatingLabel?.frame = frame ?? self.bounds
         }
+    }
+    
+    func showError(message: String?) {
+        hasText ? (errorLabel?.frame.origin.x = CGFloat(placeholderTextWidth + 10)) : (errorLabel?.frame.origin.x = CGFloat(0.0))
+        errorLabel?.text = message
+        bottomLayer.backgroundColor = UIColor.red.cgColor
+        errorLabel?.isHidden = false
     }
 }
 extension FloatingTextField {
